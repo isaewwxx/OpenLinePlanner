@@ -1,0 +1,38 @@
+# Clippy configuration
+# Documentation: https://rust-lang.github.io/rust-clippy/master/
+
+# Allow some common patterns that might be false positives
+allow = [
+    "clippy::too_many_arguments",
+    "clippy::type_complexity",
+    "clippy::module_name_repetitions",
+    "clippy::missing_errors_doc",
+    "clippy::missing_panics_doc",
+    "clippy::must_use_candidate",
+    "clippy::return_self_not_must_use",
+    "clippy::similar_names",
+    "clippy::struct_excessive_bools",
+    "clippy::too_many_lines",
+    "clippy::unnecessary_wraps",
+    "clippy::use_self",
+]
+
+# Deny some important warnings
+deny = [
+    "clippy::all",
+    "clippy::pedantic",
+    "clippy::nursery",
+    "clippy::cargo",
+]
+
+# Set specific rules
+warn = [
+    "clippy::unwrap_used",
+    "clippy::expect_used",
+    "clippy::print_stdout",
+    "clippy::print_stderr",
+    "clippy::dbg_macro",
+    "clippy::todo",
+    "clippy::unimplemented",
+    "clippy::unreachable",
+]

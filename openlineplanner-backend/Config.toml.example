@@ -1,0 +1,45 @@
+# OpenLinePlanner Backend Configuration
+
+[data]
+# Path to residence data (GeoJSON format)
+residence = "./data/residence.geojson"
+# Path to OSM data (PBF format)
+osm = "./data/region.osm.pbf"
+
+[cache]
+# Cache directory for processed data
+dir = "./cache/"
+
+[server]
+# Number of worker threads (default: number of CPU cores)
+workers = 4
+# Connection backlog size
+backlog = 1024
+# Keep-alive timeout in seconds
+keep_alive = 75
+# Client timeout in seconds
+client_timeout = 60
+
+[logging]
+# Log level: trace, debug, info, warn, error
+level = "info"
+# Enable structured logging
+structured = true
+
+[security]
+# CORS allowed origins (comma-separated)
+allowed_origins = [
+    "https://openlineplanner.com",
+    "https://test.openlineplanner.com",
+    "http://localhost:3000"
+]
+# Rate limiting requests per minute
+rate_limit = 1000
+
+[performance]
+# Enable response compression
+compression = true
+# Cache static assets
+static_cache = true
+# Database connection pool size
+pool_size = 10
