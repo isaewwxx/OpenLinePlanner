@@ -1,30 +1,23 @@
 <div id="top"></div>
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
 
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
+[![CI/CD][ci-shield]][ci-url]
+[![Code Coverage][coverage-shield]][coverage-url]
 
-<!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
+  <a href="https://github.com/TheNewCivilian/OpenLinePlanner">
     <img src="doc/logo.svg" alt="Logo" width="80" height="80">
   </a>
 
   <h2 align="center">OpenLinePlanner</h3>
 
   <p align="center">
-    Fast and Easy public transport network prototyping
+    Fast and Easy public transport network prototyping with modern web technologies
     <br />
     <a href="https://openlineplanner.com/"><strong>Check out the Demo »</strong></a>
     <br />
@@ -37,7 +30,6 @@
   </p>
 </div>
 
-<!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
   <ol>
@@ -45,6 +37,7 @@
       <a href="#about-the-project">About The Project</a>
       <ul>
         <li><a href="#built-with">Built With</a></li>
+        <li><a href="#key-features">Key Features</a></li>
       </ul>
     </li>
     <li>
@@ -54,164 +47,274 @@
       </ul>
     </li>
     <li>
-      <a href="#setting-up-developing-environment">Setting up Developing Environment</a>
+      <a href="#getting-started">Getting Started</a>
       <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#backend-setup">Backend Setup</a></li>
         <li><a href="#frontend-setup">Frontend Setup</a></li>
+        <li><a href="#development">Development</a></li>
       </ul>
     </li>
+    <li><a href="#testing">Testing</a></li>
+    <li><a href="#deployment">Deployment</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
-
-<!-- ABOUT THE PROJECT -->
 
 ## About The Project
 
 ![OpenLinePlanner Screen Shot][product-screenshot]
 
-Its main purpose is to prototype public transport lines on the open field, analyse the station coverage and find the optimal station position.
+OpenLinePlanner is a modern, high-performance web application for prototyping public transport networks. It provides an intuitive interface for drawing transportation lines, analyzing station coverage, and optimizing station placement.
 
-The tool allows to save configurations fast and export all results to a printable pdf.
+### Key Features
 
-It is build to be extendable and easy to adjust, to be applicable in different scenarios.
-
-<p align="right">(<a href="#top">back to top</a>)</p>
+- 🚇 **Interactive Map Interface** - Draw and edit transportation lines with real-time feedback
+- 📊 **Advanced Analytics** - Analyze coverage areas and passenger demand
+- 🎯 **Optimal Station Placement** - AI-powered station location optimization
+- 📱 **Responsive Design** - Works seamlessly on desktop and mobile devices
+- 🔄 **Real-time Updates** - Live updates and collaborative features
+- 📄 **Export Capabilities** - Export maps and analysis as PDF reports
+- 🎨 **Customizable Styling** - Dark/light themes and customizable line colors
+- 🔒 **Type Safety** - Full TypeScript support for better development experience
 
 ### Built With
 
-This project was build with:
+**Frontend:**
+- [![Vue][Vue.js]][Vue-url] - Progressive JavaScript framework
+- [![TypeScript][TypeScript]][TypeScript-url] - Type-safe JavaScript
+- [![Vite][Vite]][Vite-url] - Fast build tool and dev server
+- [![Pinia][Pinia]][Pinia-url] - State management
+- [![Mapbox GL][Mapbox]][Mapbox-url] - Interactive maps
 
-[![Vue][Vue.js]][Vue-url]
-[![Vite][Vite]][Vite-url]
-[![Rust][Rust]][Rust-url]
-[![Matomo][Matomo]][Matomo-url]
+**Backend:**
+- [![Rust][Rust]][Rust-url] - High-performance systems programming
+- [![Actix Web][Actix]][Actix-url] - Fast web framework
+- [![Serde][Serde]][Serde-url] - Serialization framework
+- [![Geo][Geo]][Geo-url] - Geospatial data processing
 
-And deployed with:
-
-[![Docker][Docker]][Docker-url]
+**DevOps:**
+- [![Docker][Docker]][Docker-url] - Containerization
+- [![GitHub Actions][GitHub Actions]][GitHub Actions-url] - CI/CD
+- [![Vitest][Vitest]][Vitest-url] - Unit testing
+- [![ESLint][ESLint]][ESLint-url] - Code linting
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-<!-- USAGE EXAMPLES -->
-
 ## Usage
 
-OpenLinePlanner allows you to
+OpenLinePlanner allows you to:
 
-... draw **schematic transportation** lines on map <br>
-... name lines and stations <br>
-... give a custom color to each line <br>
-... **analyse** coverage area of stations <br>
-... **export** map and analysis as PDF <br>
-... automatically **locate new stations**, based on predicted demand <br>
+- 🗺️ **Draw schematic transportation lines** on interactive maps
+- 🏷️ **Name lines and stations** with custom identifiers
+- 🎨 **Customize line colors** and styling
+- 📊 **Analyze coverage areas** of stations with detailed metrics
+- 📄 **Export maps and analysis** as professional PDF reports
+- 🤖 **Automatically locate new stations** based on predicted demand
+- 🔄 **Real-time collaboration** with team members
 
 ### Calculation Methods
 
-By default OpenLinePlanner is configured to show the **absolute** amount of residences living in the coverage area of each station.
-Every person in the influence radius of the station (default 500m) is rated with the weight of 1.
-i.e. if 200 people life in the influence are the result is a score of 200
+The application supports multiple calculation methods for coverage analysis:
 
-Alternatively a relative measurement can be applied (Settings). This approach takes the distance between station and the home of a potential passenger into account:
+**Absolute Method (Default):**
+- Shows the absolute number of residences in each station's coverage area
+- Every person within the influence radius (default: 500m) is weighted equally
+- Result: Direct count of potential passengers
 
-```js
+**Relative Method:**
+- Takes distance between station and residence into account
+- Uses inverse square root distance weighting: `1 / sqrt(distance)`
+- Result: Distance-weighted passenger potential
+
+```javascript
 // Calculation methods:
 absolute: 1;
 relative: 1 / sqrt(distance);
 ```
 
-If your scenario requires adjusted parameters please reach out! ([Contact via Email](mailto:hi@xatellite.space))
-Further adjustment dialogs are planned to be implemented if requested.
-
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-## Screenshots
+## Getting Started
 
-![OpenLinePlanner coverage area visualization][station-info-screenshot]
-![OpenLinePlanner coverage area visualization][coverage-screenshot]
-![OpenLinePlanner coverage area visualization][coverage-station-screenshot]
-![OpenLinePlanner coverage area visualization][data-screenshot]
-![OpenLinePlanner coverage area visualization][timetable-screenshot]
+### Prerequisites
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-<!-- GETTING STARTED -->
-
-## Setting up Developing Environment
-
-This is a short guide to setup your own development environment of OpenLinePlanner.
-
-1. To start of clone the Repo:
-   ```sh
-   $ git clone https://github.com/TheNewCivilian/OpenLinePlanner.git
-   ```
+- **Node.js** 18.x or higher
+- **Rust** 1.70+ and Cargo
+- **Git** for version control
+- **Docker** (optional, for containerized deployment)
 
 ### Backend Setup
 
-The backend can be build running
-
-2. Build backend
-
-   ```sh
-   $ cd openlineplanner-backend
-   $ cargo build --release
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/TheNewCivilian/OpenLinePlanner.git
+   cd OpenLinePlanner/openlineplanner-backend
    ```
 
-3. Gather data files from [OpenPopulationEstimator](https://github.com/TheNewCivilian/OpenPopulationEstimator) (inhabitants geojson) and e.g. [Protomaps](https://app.protomaps.com/downloads/osm) (pbf file of region)
-
-4. Add ./settings/Settings.toml e.g.
-
-   ```toml
-    [data]
-    residence = "./data/residence.geojson"
-    osm = "./data/Wien_Donaustadt.osm.pbf"
+2. **Install Rust dependencies:**
+   ```bash
+   cargo build --release
    ```
 
-5. Install backend binaries
-   ```sh
-   $ cargo install --path .
+3. **Configure the application:**
+   ```bash
+   cp Config.toml.example Config.toml
+   # Edit Config.toml with your data file paths
    ```
-6. Startup Backend (Takes some minutes on first startup)
-   ```sh
-   $ openlineplanner-backend
+
+4. **Add data files:**
+   - Download population data from [OpenPopulationEstimator](https://github.com/TheNewCivilian/OpenPopulationEstimator)
+   - Download OSM data from [Protomaps](https://app.protomaps.com/downloads/osm)
+   - Place files in the `data/` directory
+
+5. **Install and run:**
+   ```bash
+   cargo install --path .
+   openlineplanner-backend
    ```
 
 ### Frontend Setup
 
-All environment variables are automatically loaded by VITE from the available .env files. If you need to adjust ports or endpoints check these files.
+1. **Navigate to frontend directory:**
+   ```bash
+   cd ../openlineplanner
+   ```
 
-4. Install all NPM packages
-   ```sh
-   $ yarn
+2. **Install dependencies:**
+   ```bash
+   npm install
    ```
-5. Start development server
-   ```js
-   $ yarn dev
+
+3. **Configure environment:**
+   ```bash
+   cp .env.example .env
+   # Edit .env with your configuration
    ```
+
+4. **Start development server:**
+   ```bash
+   npm run dev
+   ```
+
+### Development
+
+**Available Scripts:**
+```bash
+# Development
+npm run dev              # Start development server
+npm run build           # Build for production
+npm run preview         # Preview production build
+
+# Code Quality
+npm run lint            # Run ESLint
+npm run type-check      # Run TypeScript checks
+npm run format          # Format code with Prettier
+
+# Testing
+npm run test            # Run unit tests
+npm run test:ui         # Run tests with UI
+npm run test:coverage   # Generate coverage report
+```
+
+**Backend Development:**
+```bash
+# Code Quality
+cargo fmt               # Format code
+cargo clippy           # Run linter
+cargo test             # Run tests
+
+# Performance
+cargo build --release  # Optimized build
+cargo bench            # Run benchmarks
+```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-<!-- CONTRIBUTING -->
+## Testing
+
+The project includes comprehensive testing infrastructure:
+
+**Frontend Tests:**
+- Unit tests with Vitest
+- Component testing with Vue Test Utils
+- E2E testing capabilities
+- Coverage reporting
+
+**Backend Tests:**
+- Unit tests with Rust's built-in test framework
+- Integration tests
+- Performance benchmarks
+- Code coverage with tarpaulin
+
+**Running Tests:**
+```bash
+# Frontend
+npm run test
+npm run test:coverage
+
+# Backend
+cargo test
+cargo test --release
+```
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+## Deployment
+
+### Docker Deployment
+
+**Frontend:**
+```bash
+docker build -t openlineplanner-frontend .
+docker run -p 3000:80 openlineplanner-frontend
+```
+
+**Backend:**
+```bash
+docker build -t openlineplanner-backend .
+docker run -p 8080:8080 openlineplanner-backend
+```
+
+### Production Deployment
+
+1. **Build the applications:**
+   ```bash
+   # Frontend
+   npm run build
+   
+   # Backend
+   cargo build --release
+   ```
+
+2. **Configure environment variables**
+3. **Set up reverse proxy (nginx recommended)**
+4. **Configure SSL certificates**
+5. **Set up monitoring and logging**
+
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Contributing
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+We welcome contributions! Please follow these steps:
 
-If you have a suggestion that would make OpenLinePlanner better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-If this project brings you any value or inspires you don't forget to give the project a star! Thanks again!
+1. **Fork the project**
+2. **Create a feature branch** (`git checkout -b feature/AmazingFeature`)
+3. **Make your changes** following our coding standards
+4. **Run tests** to ensure everything works
+5. **Commit your changes** (`git commit -m 'Add some AmazingFeature'`)
+6. **Push to the branch** (`git push origin feature/AmazingFeature`)
+7. **Open a Pull Request**
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+**Development Guidelines:**
+- Follow the existing code style
+- Add tests for new features
+- Update documentation as needed
+- Ensure all tests pass before submitting
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-<!-- LICENSE -->
 
 ## License
 
@@ -219,37 +322,28 @@ Distributed under the GNU GPL V3 License. See `LICENSE.txt` for more information
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-<!-- CONTACT -->
-
 ## Contact
 
-Email: [hi@xatellite.space](mailto:hi@xatellite.space)
-
-Project Link: [https://github.com/xatellite/OpenLinePlanner](https://github.com/xatellite/OpenLinePlanner)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
+- **Email:** [hi@xatellite.space](mailto:hi@xatellite.space)
+- **Project Link:** [https://github.com/TheNewCivilian/OpenLinePlanner](https://github.com/TheNewCivilian/OpenLinePlanner)
+- **Documentation:** [https://openlineplanner.com/docs](https://openlineplanner.com/docs)
 
 ## Contributors
 
-[TheNewCivilian](https://github.com/TheNewCivilian), [zdmx](https://github.com/zandemax)
-
-<!-- ACKNOWLEDGMENTS -->
+- [TheNewCivilian](https://github.com/TheNewCivilian) - Lead Developer
+- [zdmx](https://github.com/zandemax) - Contributor
 
 ## Acknowledgments
 
-The following pages and resources have been very helpful in the creation of the project:
-
-- [README Template - @OthneilDrew](https://github.com/othneildrew/Best-README-Template)
-- [Choose an Open Source License - @ChooseaLicense](https://choosealicense.com)
-- [Img Shields - @ShieldIO](https://shields.io)
+- [README Template](https://github.com/othneildrew/Best-README-Template) by @OthneilDrew
+- [Choose an Open Source License](https://choosealicense.com) by @ChooseaLicense
+- [Img Shields](https://shields.io) by @ShieldIO
 
 This project was created as part of the interdisciplinary project of the master class Rail Technology and Management of Railway Systems @FH-St.Pölten.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-
 [contributors-shield]: https://img.shields.io/github/contributors/TheNewCivilian/OpenLinePlanner.svg?style=for-the-badge
 [contributors-url]: https://github.com/TheNewCivilian/OpenLinePlanner/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/TheNewCivilian/OpenLinePlanner.svg?style=for-the-badge
@@ -260,20 +354,34 @@ This project was created as part of the interdisciplinary project of the master 
 [issues-url]: https://github.com/TheNewCivilian/OpenLinePlanner/issues
 [license-shield]: https://img.shields.io/github/license/TheNewCivilian/OpenLinePlanner.svg?style=for-the-badge
 [license-url]: https://github.com/TheNewCivilian/OpenLinePlanner/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[ci-shield]: https://img.shields.io/github/actions/workflow/status/TheNewCivilian/OpenLinePlanner/ci.yml?style=for-the-badge
+[ci-url]: https://github.com/TheNewCivilian/OpenLinePlanner/actions
+[coverage-shield]: https://img.shields.io/codecov/c/github/TheNewCivilian/OpenLinePlanner?style=for-the-badge
+[coverage-url]: https://codecov.io/gh/TheNewCivilian/OpenLinePlanner
 [product-screenshot]: ./doc/images/plain.png
-[coverage-screenshot]: ./doc/images/coverage.png
-[station-info-screenshot]: ./doc/images/station_info.png
-[coverage-station-screenshot]: ./doc/images/coverage_station.png
-[data-screenshot]: ./doc/images/data.png
-[timetable-screenshot]: ./doc/images/timetable.png
 [Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
 [Vue-url]: https://vuejs.org/
-[Vite]: https://img.shields.io/badge/Vite-35495E?style=for-the-badge&logo=Vite&logoColor=646CFF
+[TypeScript]: https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white
+[TypeScript-url]: https://www.typescriptlang.org/
+[Vite]: https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=Vite&logoColor=white
 [Vite-url]: https://vitejs.dev/
-[Docker]: https://img.shields.io/badge/Docker-35495E?style=for-the-badge&logo=Docker&logoColor=2496ED
-[Docker-url]: https://www.docker.com/
-[Rust]: https://img.shields.io/badge/Rust-35495E?style=for-the-badge&logo=Rust&logoColor=000000
+[Pinia]: https://img.shields.io/badge/Pinia-FFD02F?style=for-the-badge&logo=pinia&logoColor=black
+[Pinia-url]: https://pinia.vuejs.org/
+[Mapbox]: https://img.shields.io/badge/Mapbox-000000?style=for-the-badge&logo=mapbox&logoColor=white
+[Mapbox-url]: https://www.mapbox.com/
+[Rust]: https://img.shields.io/badge/Rust-000000?style=for-the-badge&logo=rust&logoColor=white
 [Rust-url]: https://www.rust-lang.org/
-[Matomo]: https://img.shields.io/badge/Matomo-35495E?style=for-the-badge&logo=Matomo&logoColor=3152A0
-[Matomo-url]: https://matomo.org/
+[Actix]: https://img.shields.io/badge/Actix-000000?style=for-the-badge&logo=actix&logoColor=white
+[Actix-url]: https://actix.rs/
+[Serde]: https://img.shields.io/badge/Serde-000000?style=for-the-badge&logo=serde&logoColor=white
+[Serde-url]: https://serde.rs/
+[Geo]: https://img.shields.io/badge/Geo-000000?style=for-the-badge&logo=geo&logoColor=white
+[Geo-url]: https://docs.rs/geo/
+[Docker]: https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=Docker&logoColor=white
+[Docker-url]: https://www.docker.com/
+[GitHub Actions]: https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white
+[GitHub Actions-url]: https://github.com/features/actions
+[Vitest]: https://img.shields.io/badge/Vitest-6E9F18?style=for-the-badge&logo=vitest&logoColor=white
+[Vitest-url]: https://vitest.dev/
+[ESLint]: https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white
+[ESLint-url]: https://eslint.org/
